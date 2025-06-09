@@ -1,14 +1,37 @@
-Задание 1 - скринкаст https://www.loom.com/share/5a3f2b8970af475eb8c127e91b6c6dbf?sid=2fa0d43e-a44a-4cc5-880b-660b14a97e6b
+https://docs.google.com/document/d/1yf-soLrXXVnJz34jm6lV37lWS5hoxsutKlxjseJfw3o/edit?tab=t.0
 
-Задание 2
-Вопрос 1. Зачем нужен ssh? Ответ на пару предложений.
-Secure Shell нужен для безопасного удаленного доступа к серверам. Позволяет управлять сервером через терминал, передавать файлы и выполнять команды по защищенному каналу.
-Вопрос 2. Предположим, у вас есть прямой доступ к серверу(терминалу) под управлением ubuntu. У вас есть коллега Вася, который хочет получить доступ к этому серверу. Он генерирует пару ssh ключей с помощью команды ssh-keygen и дает вам свой публичный ключ. В какой файл на сервере нужно записать ключ, чтобы Вася смог подключиться к терминалу сервера?
-~/.ssh/authorized_keys
-Вопрос 3. Тут вопрос про АПИ. Разберитесь, что такое long polling и webhooks, опишите сами в нескольких предложениях, как они работают. https://grammy.dev/guide/deployment-types
-Long polling — клиент делает HTTP-запрос к серверу, и сервер держит соединение открытым, пока не появятся новые данные. После ответа клиент сразу делает новый запрос.
-Webhook — сервер сам отправляет HTTP-запрос на указанный URL, когда происходят изменения, без необходимости ждать запроса от клиента.
-Вопрос 4. Найдите информацию, что такое issues на гитхабе и для чего нужны. Также вставьте ссылки на пару примеров issues в популярных open source проектах.
-Issues - это задачи или вопросы по проекту (например, баги или фичи). Примеры: https://github.com/facebook/react/pull/28566 и https://github.com/nodejs/node/pull/51221 
-Вопрос 5. Ваш проект используется пустую папку images, но гит не поддерживает отслеживание пустых директорий. Что делать?
-В пустую папку можно кинуть файл .gitkeep, чтобы Git её видел (через запрос специальный)
+
+задание 1 https://www.loom.com/share/14363ddd0e8c43229e18a9fe8e219385?sid=877a61e0-72d9-4926-ba5e-7a1838d6b728  
+
+задание 2 https://www.loom.com/share/e6b7d8d7728643a7a46a93cb71cd3dfc?sid=c2248908-dddd-4f74-b491-5d0fdadb92e3  
+
+запросы: 
+1 - 
+SELECT username
+FROM users;
+
+
+2 - 
+SELECT users.username,
+COUNT(messages.id) AS number_of_sent_messages
+FROM users
+LEFT JOIN messages ON users.id = messages.from
+GROUP BY users.username
+
+
+3 - 
+
+
+SELECT users.username, COUNT(messages.id) AS number_of_received_messages
+FROM users
+LEFT JOIN messages ON users.id = messages.to
+GROUP BY users.username
+ORDER BY number_of_received_messages DESC
+
+
+4 - 
+SELECT ROUND(1.0 * COUNT(messages.id) / COUNT(DISTINCT users.id), 2) AS avg_sent_messages_per_user
+FROM users
+LEFT JOIN messages ON users.id = messages.from;
+
+
